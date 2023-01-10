@@ -1,0 +1,11 @@
+.home {
+  padding-left: 20px;
+  margin-right: 5px;
+  font-size: 20px;
+  border-style: none;
+  background: none;
+}
+
+.home:hover {
+  color: rgb(216, 84, 22);
+}
