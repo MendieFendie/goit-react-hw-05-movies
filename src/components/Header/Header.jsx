@@ -1,12 +1,18 @@
+import { Link, Outlet } from 'react-router-dom';
 import css from './Header.module.css';
-import Home from 'components/Home/Home';
-import Movies from 'components/Movies/Movies';
 
 export default function Header() {
   return (
-    <header className={css.header}>
-      <Home />
-      <Movies />
-    </header>
+    <>
+      <nav className={css.header}>
+        <Link className={css.home} to="/">
+          Home
+        </Link>
+        <Link className={css.movies} to="/movies">
+          Movies
+        </Link>
+      </nav>
+      <Outlet />
+    </>
   );
 }
