@@ -1,7 +1,10 @@
 import { Routes, Route } from 'react-router-dom';
+import NotFound from './404Page/NotFound';
+import Cast from './Cast/Cast';
 import FilmCard from './FilmCard/FilmCard';
 import Header from './Header/Header';
 import Movies from './Movies/Movies';
+import Review from './Review/Review';
 import TrendingFilms from './TrendingFilms/TrendingFilms';
 
 export const App = () => {
@@ -11,15 +14,15 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Header />}>
             <Route path="/" element={<TrendingFilms />} />
-            <Route path="movies" element={<Movies />} />
+            <Route path="/movies" element={<Movies />}></Route>
+            <Route path="movies/:id" element={<FilmCard />}>
+              <Route path="cast" element={<Cast />}></Route>
+              <Route path="reviews" element={<Review />}></Route>
+            </Route>
           </Route>
-
-          <Route path="/movies/:id" element={<FilmCard />}></Route>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </>
   );
 };
-
-/* <Route path="cast" element={<Cast />} />
-            <Route path="review" element={<Review />} /> */
