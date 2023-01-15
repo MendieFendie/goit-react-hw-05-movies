@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import NotFound from 'components/404Page/NotFound';
+import GoBackBtn from 'components/GobackBtn/GoBackBtn';
 
 const API_KEY = '101bb3eef7255fbc3d76a68d5a0e86b7';
 
@@ -22,12 +23,14 @@ export default function FilmCard() {
     }
     getFilm();
   }, [id]);
+  console.log(film);
   if (!film.data) {
-    return;
+    return <NotFound />;
   }
 
   return (
     <main>
+      <GoBackBtn />
       <img
         src={`https://image.tmdb.org/t/p/w500/${film.data.poster_path}`}
         alt={film.data.title}
@@ -53,7 +56,6 @@ export default function FilmCard() {
             <Link to={`reviews`}>Reviews</Link>
           </li>
         </ul>
-
         <Outlet />
       </div>
     </main>

@@ -20,7 +20,7 @@ export default function TrendingFilms() {
     }
     getFilms();
   }, []);
-  console.log(films);
+
   return (
     <>
       <h1>Trending Today</h1>
