@@ -1,0 +1,35 @@
+.container {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.card {
+  display: flex;
+}
+
+.img {
+  margin-right: 10px;
+}
+
+.addictional_list {
+  list-style: none;
+  padding: 0;
+}
+
+.addictional_elem {
+  text-decoration: none;
+  color: black;
+}
+
+.addictional_elem > a {
+  color: black;
+  text-decoration: none;
+}
+
+.addictional_elem:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.addictional_elem > a:hover {
+  color: rgb(216, 84, 22);
+}
