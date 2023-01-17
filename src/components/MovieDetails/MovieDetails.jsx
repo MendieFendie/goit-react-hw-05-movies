@@ -3,11 +3,11 @@ import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
 import NotFound from 'components/404Page/NotFound';
 import GoBackBtn from 'components/GobackBtn/GoBackBtn';
-import css from './FilmCard.module.css';
+import css from './MovieDetails.module.css';
 
 const API_KEY = '101bb3eef7255fbc3d76a68d5a0e86b7';
 
-export default function FilmCard() {
+export default function MovieDetails() {
   const [film, setFilm] = useState(null);
   const { id } = useParams(null);
 
@@ -24,7 +24,6 @@ export default function FilmCard() {
 
   useEffect(() => {
     getFilm(id);
-    console.log('hello');
   }, [id]);
 
   return (
