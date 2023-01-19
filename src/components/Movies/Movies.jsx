@@ -13,23 +13,22 @@ export default function Movies() {
   const [searchParams, setSearchParams] = useSearchParams();
   const name = searchParams.get('quary');
 
-  async function getFilms() {
-    try {
-      const response = await axios.get(
-        `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${name}`
-      );
-      setFilms(response.data.results);
-    } catch (error) {
-      console.error(error.message);
-    }
-  }
-
   function submitSearch(e) {
     e.preventDefault();
     setSearchParams({ quary: search });
   }
 
   useEffect(() => {
+    async function getFilms() {
+      try {
+        const response = await axios.get(
+          `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${name}`
+        );
+        setFilms(response.data.results);
+      } catch (error) {
+        console.error(error.message);
+      }
+    }
     if (name) {
       getFilms();
     }
