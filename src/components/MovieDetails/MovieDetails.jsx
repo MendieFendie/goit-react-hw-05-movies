@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useParams } from 'react-router-dom';
 import axios from 'axios';
-import NotFound from 'components/404Page/NotFound';
+import NotFound from 'pages/404Page/NotFound';
 import GoBackBtn from 'components/GobackBtn/GoBackBtn';
 import css from './MovieDetails.module.css';
 
