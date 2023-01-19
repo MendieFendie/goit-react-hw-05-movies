@@ -1,0 +1,13 @@
+.form {
+  margin-bottom: 20px;
+}
+
+.form_input {
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}
+
+.form_btn {
+  border: 0;
+  box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
+}

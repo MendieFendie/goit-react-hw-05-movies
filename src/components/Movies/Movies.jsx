@@ -3,16 +3,17 @@ import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
 import css from '../TrendingFilms/TrendingFilms.module.css';
+import csss from './Movies.module.css';
 
 const API_KEY = '101bb3eef7255fbc3d76a68d5a0e86b7';
 
 export default function Movies() {
   const [films, setFilms] = useState([]);
+  const [search, setSearch] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
   const name = searchParams.get('quary');
 
-  async function getFilms(e) {
-    e.preventDefault();
+  async function getFilms() {
     try {
       const response = await axios.get(
         `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${name}`
@@ -23,18 +24,32 @@ export default function Movies() {
     }
   }
 
+  function submitSearch(e) {
+    e.preventDefault();
+    setSearchParams({ quary: search });
+  }
+
   useEffect(() => {
-    console.log(name);
+    if (name) {
+      getFilms();
+    }
   }, [name]);
 
   return (
-    <>
-      <form onSubmit={getFilms}>
+    <div className={css.container}>
+      <form className={csss.form} onSubmit={submitSearch}>
         <input
+          className={csss.form_input}
           type="text"
-          onChange={e => setSearchParams({ quary: e.target.value })}
+          value={search}
+          placeholder={'film name '}
+          onChange={e => {
+            setSearch(e.target.value);
+          }}
         />
-        <button type="click">Search</button>
+        <button className={csss.form_btn} type="click">
+          Search
+        </button>
       </form>
 
       {films === [] ? null : (
@@ -44,7 +59,7 @@ export default function Movies() {
               <div className={css.tranding_group}>
                 {films.map(film => (
                   <li className={css.tranding_element} key={film.id}>
-                    <Link to={`movies/${film.id}`}>
+                    <Link to={`${film.id}`}>
                       {film.original_title ? film.original_title : film.name}
                     </Link>
                   </li>
@@ -54,6 +69,6 @@ export default function Movies() {
           }
         </div>
       )}
-    </>
+    </div>
   );
 }

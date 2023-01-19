@@ -25,7 +25,6 @@ export default function Cast() {
     return;
   }
 
-  console.log(cast.data.cast);
   return (
     <ul>
       {cast.data.cast.map(actor => (

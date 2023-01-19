@@ -24,7 +24,7 @@ export default function Review() {
   if (!film.data) {
     return;
   }
-  console.log(film.data);
+
   return (
     <div>
       {film.data.total_results !== 0 ? (
