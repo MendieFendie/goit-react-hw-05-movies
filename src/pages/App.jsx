@@ -1,25 +1,15 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy, Suspense } from 'react';
 import NotFound from './404Page/NotFound';
-// import Cast from '../components/Cast/Cast';
-// import MovieDetails from '../components/MovieDetails/MovieDetails';
-// import Header from './Header/Header';
-// import Movies from './Movies/Movies';
-// import Review from '../components/Review/Review';
-//  import TrendingFilms from '../components/TrendingFilms/TrendingFilms';
 
-const TrendingFilms = lazy(() =>
-  import('../components/TrendingFilms/TrendingFilms')
-);
+const TrendingFilms = lazy(() => import('./TrendingFilms/TrendingFilms'));
 
-const Review = lazy(() => import('../components/Review/Review'));
+const Review = lazy(() => import('./Review/Review'));
 
 const Movies = lazy(() => import('./Movies/Movies'));
 const Header = lazy(() => import('./Header/Header'));
-const MovieDetails = lazy(() =>
-  import('../components/MovieDetails/MovieDetails')
-);
-const Cast = lazy(() => import('../components/Cast/Cast'));
+const MovieDetails = lazy(() => import('./MovieDetails/MovieDetails'));
+const Cast = lazy(() => import('./Cast/Cast'));
 
 export const App = () => {
   return (
@@ -33,8 +23,8 @@ export const App = () => {
               <Route path="cast" element={<Cast />} />
               <Route path="reviews" element={<Review />} />
             </Route>
+            <Route path="*" element={<NotFound />} />
           </Route>
-          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </>

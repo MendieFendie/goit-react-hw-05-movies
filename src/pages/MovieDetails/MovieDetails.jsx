@@ -1,8 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { useState, useEffect, Suspense } from 'react';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom';
 import axios from 'axios';
 import NotFound from 'pages/404Page/NotFound';
-import GoBackBtn from 'components/GobackBtn/GoBackBtn';
 import css from './MovieDetails.module.css';
 
 const API_KEY = '101bb3eef7255fbc3d76a68d5a0e86b7';
@@ -26,11 +25,16 @@ export default function MovieDetails() {
     getFilm(id);
   }, [id]);
 
+  const location = useLocation();
+  const comeBack = location.state ?? '/';
+
   return (
     <>
       {film !== null ? (
         <div className={css.container}>
-          <GoBackBtn />
+          <Link to={comeBack}>
+            <button className={css.btn}>Go back</button>
+          </Link>
           <main className={css.card}>
             <img
               className={css.img}
@@ -55,13 +59,15 @@ export default function MovieDetails() {
             <h2>Addictional information</h2>
             <ul className={css.addictional_list}>
               <li className={css.addictional_elem}>
-                <Link to={'cast'}>Cast</Link>
+                <Link to="cast">Cast</Link>
               </li>
               <li className={css.addictional_elem}>
-                <Link to={`reviews`}>Reviews</Link>
+                <Link to="reviews">Reviews</Link>
               </li>
             </ul>
-            <Outlet />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Outlet />
+            </Suspense>
           </div>
         </div>
       ) : (

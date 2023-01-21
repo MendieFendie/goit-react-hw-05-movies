@@ -33,3 +33,9 @@
 .addictional_elem > a:hover {
   color: rgb(216, 84, 22);
 }
+
+.btn {
+  width: 75px;
+  height: auto;
+  margin-bottom: 10px;
+}

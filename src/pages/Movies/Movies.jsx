@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import css from '../../components/TrendingFilms/TrendingFilms.module.css';
+import css from '../TrendingFilms/TrendingFilms.module.css';
 import csss from './Movies.module.css';
 
 const API_KEY = '101bb3eef7255fbc3d76a68d5a0e86b7';
