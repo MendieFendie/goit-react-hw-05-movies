@@ -34,6 +34,12 @@ export default function Movies() {
     }
   }, [name]);
 
+  useEffect(() => {
+    if (name) {
+      setSearch(name);
+    }
+  }, [name]);
+
   const location = useLocation();
 
   return (
