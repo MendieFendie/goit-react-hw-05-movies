@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { useSearchParams, Link } from 'react-router-dom';
+import { useSearchParams, Link, useLocation } from 'react-router-dom';
 import axios from 'axios';
 import css from '../TrendingFilms/TrendingFilms.module.css';
 import csss from './Movies.module.css';
@@ -34,6 +34,8 @@ export default function Movies() {
     }
   }, [name]);
 
+  const location = useLocation();
+
   return (
     <div className={css.container}>
       <form className={csss.form} onSubmit={submitSearch}>
@@ -58,7 +60,7 @@ export default function Movies() {
               <div className={css.tranding_group}>
                 {films.map(film => (
                   <li className={css.tranding_element} key={film.id}>
-                    <Link to={`${film.id}`}>
+                    <Link to={`${film.id}`} state={{ from: location }}>
                       {film.original_title ? film.original_title : film.name}
                     </Link>
                   </li>

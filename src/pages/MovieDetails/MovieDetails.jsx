@@ -26,7 +26,7 @@ export default function MovieDetails() {
   }, [id]);
 
   const location = useLocation();
-  const comeBack = location.state ?? '/';
+  const comeBack = location.state?.from ?? '/';
 
   return (
     <>
@@ -59,10 +59,14 @@ export default function MovieDetails() {
             <h2>Addictional information</h2>
             <ul className={css.addictional_list}>
               <li className={css.addictional_elem}>
-                <Link to="cast">Cast</Link>
+                <Link to="cast" state={{ from: comeBack }}>
+                  Cast
+                </Link>
               </li>
               <li className={css.addictional_elem}>
-                <Link to="reviews">Reviews</Link>
+                <Link to="reviews" state={{ from: comeBack }}>
+                  Reviews
+                </Link>
               </li>
             </ul>
             <Suspense fallback={<div>Loading...</div>}>
